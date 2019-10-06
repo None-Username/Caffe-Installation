@@ -254,13 +254,13 @@
     #OPENCV_VERSION := 3										#OLD
     OPENCV_VERSION :=3											#NEW
     
-    #WITH_PYTHON_LAYER := 1										#OLD
+    #WITH_PYTHON_LAYER := 1									#OLD
     WITH_PYTHON_LAYER := 1										#NEW
     
     INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include		#OLD
     LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib		
     
-    															#NEW
+    															            #NEW
     INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
     LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
     ```
@@ -268,16 +268,16 @@
     然后修改`/caffe` 目录下的`Makefile` 文件：
 
     ```makefile
-    NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)						#OLD
-    NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)	#NEW
+    NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)						      #OLD
+    NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)	   #NEW
     
     LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5	#OLD
-    																				#NEW
+    																				                     #NEW
     LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
     																				
                                                                                     #OLD
     #error-- unsupported GNU version! gcc versions later than 4.9 are not supported!
-    																				#NEW
+    																				                     #NEW
     //#error-- unsupported GNU version! gcc versions later than 4.9 are not supported!
     ```
 
