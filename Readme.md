@@ -248,19 +248,26 @@
     修改如下几行：
 
     ```makefile
-    #USE_CUDNN := 1												#OLD
-    USE_CUDNN := 1												#NEW
+    #OLD
+    #USE_CUDNN := 1
+    #NEW
+    USE_CUDNN := 1												
     
-    #OPENCV_VERSION := 3										#OLD
-    OPENCV_VERSION :=3											#NEW
+    #OLD
+    #OPENCV_VERSION := 3										
+    #NEW
+    OPENCV_VERSION :=3											
     
-    #WITH_PYTHON_LAYER := 1									#OLD
-    WITH_PYTHON_LAYER := 1										#NEW
+    #OLD
+    #WITH_PYTHON_LAYER := 1
+    #NEW
+    WITH_PYTHON_LAYER := 1										
     
-    INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include		#OLD
+    #OLD
+    INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include		
     LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib		
     
-    															            #NEW
+    #NEW									           
     INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
     LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
     ```
@@ -268,16 +275,19 @@
     然后修改`/caffe` 目录下的`Makefile` 文件：
 
     ```makefile
-    NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)						      #OLD
-    NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)	   #NEW
+    #OLD
+    NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)						      
+    #NEW
+    NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)	   
     
-    LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5	#OLD
-    																				                     #NEW
+    #OLD
+    LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5	
+    #NEW
     LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
     																				
-                                                                                    #OLD
+    #OLD
     #error-- unsupported GNU version! gcc versions later than 4.9 are not supported!
-    																				                     #NEW
+    #NEW
     //#error-- unsupported GNU version! gcc versions later than 4.9 are not supported!
     ```
 
